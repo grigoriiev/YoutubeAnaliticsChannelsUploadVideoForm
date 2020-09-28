@@ -73,8 +73,8 @@ class YoutubeUploadVideoController extends Controller
             'check'=>'required|string'
         ]);
 
-      //  dd($request);
-      //  try {
+
+     try {
 
             $fullPathToVideo = $request->file('video')->store('uploads/video', 'public');
 
@@ -108,9 +108,9 @@ class YoutubeUploadVideoController extends Controller
                 'category_id' => (string)$request->input('category_id'),
             ]);
 
-       // }catch (Exception $exception){
-        //    abort(500,$exception->getMessage());
-      //  }
+      }catch (Exception $exception){
+        abort(500,$exception->getMessage());
+    }
         return view('/youtube/upload')->with('store', 'Your channel has been successfully store');
     }
 
