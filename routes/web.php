@@ -19,7 +19,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('video', 'VideoController');
+
 
 
 Route::get('/home', 'HomeController@index')->name('home');
@@ -38,11 +38,7 @@ Route::post('/youtube', 'YoutubeChannelController@store');
 
 Route::delete('/youtube/{youtubeChannel}', 'YoutubeChannelController@destroy');
 
-//Route::get('/youtube/statistics','YoutubeStatisticsController@youtubeInput');
-
 Route::get('/youtube/{youtubeChannel}/statistics','YoutubeStatisticsController@likesDislikesChannelStatistics');
-
-//Route::post('/youtube/statistics','YoutubeStatisticsController@likesDislikesChannelStatistics');
 
 Route::get('/youtube/statistics/top-N','YoutubeStatisticsController@topNChannelsStatistics');
 
