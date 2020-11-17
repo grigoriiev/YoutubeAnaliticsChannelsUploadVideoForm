@@ -26,6 +26,10 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
+        Gate::define('store-youtubeChannel', function () {
+            return  Auth::check();
+        });
+
         Gate::define('edit-youtubeChannel', function () {
             return  Auth::check();
         });
