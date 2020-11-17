@@ -140,7 +140,7 @@ class YoutubeChannelController extends Controller
                 'channel_Id' => 'required|unique:youtube_videos|string|max:255',
                 'check' => 'required|string'
             ]);
-
+            try {
 
             $Youtube = $this->getYoutube();
 
@@ -162,7 +162,9 @@ class YoutubeChannelController extends Controller
                 $this->storeVideoChannel($storeYoutubeChannel, $video);
 
             }
-
+            }catch (Exception $exception){
+                abort(500,$exception->getMessage());
+            }
             return redirect('/youtube/create')->with('store', 'Your youtube channel has been successfully store');
         }
     }
