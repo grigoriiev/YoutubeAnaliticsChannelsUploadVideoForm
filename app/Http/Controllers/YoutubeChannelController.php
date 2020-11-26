@@ -49,7 +49,7 @@ class YoutubeChannelController extends Controller
 
         } catch (Exception $e) {
 
-            abort(500);
+            abort(403);
 
             return false;
         }
@@ -163,7 +163,7 @@ class YoutubeChannelController extends Controller
 
             }
             }catch (Exception $exception){
-                abort(500,$exception->getMessage());
+                abort(403,$exception->getMessage());
             }
             return redirect('/youtube/create')->with('store', 'Your youtube channel has been successfully store');
         }
