@@ -57,7 +57,7 @@ class YoutubeUploadVideoController extends Controller
 
     /**
      * @param Request $request
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     public function uploadVideo(Request $request)
     {
@@ -111,7 +111,7 @@ class YoutubeUploadVideoController extends Controller
       }catch (Exception $exception){
         abort(403,$exception->getMessage());
     }
-        return view('/youtube/upload')->with('store', 'Your channel has been successfully store');
+        return redirect('/youtube/upload')->with('store', 'Your channel has been successfully store');
     }
 
     /**

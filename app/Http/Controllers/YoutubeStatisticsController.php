@@ -33,7 +33,7 @@ class YoutubeStatisticsController extends Controller
         $likesDislikeStatistics = DB::table('youtube_channels')
             ->select(DB::raw('sum(youtube_videos.likeCount) as youtubeChannelsSumLikeVideos, sum(youtube_videos.dislikeCount) as youtubeChannelsSumDislikeVideos, youtube_channels.id as channelID,  youtube_channels.title  as channelTitle'))
             ->join('youtube_videos', 'youtube_channels.id', '=', 'youtube_videos.channel_id')
-            ->where('youtube_videos.channel_Id', '=', $youtubeChannel->id)
+            ->where('youtube_videos.channel_Id', '=',(integer)trim( $youtubeChannel->id))
             ->groupBy('youtube_videos.youtube_channel_id')
             ->get();
 
