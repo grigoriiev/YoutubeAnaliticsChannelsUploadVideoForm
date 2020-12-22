@@ -22,7 +22,7 @@
         <tr>
             <th scope="col">id</th>
             <th scope="col">Title</th>
-            <th scope="col">Description}</th>
+            <th scope="col">Description</th>
             <th scope="col">View count</th>
         </tr>
         </thead>
