@@ -6,7 +6,6 @@ use App\LocalVideo;
 use Dawson\Youtube\Facades\Youtube;
 use Exception;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Facades\Image;
 
 /**
@@ -136,11 +135,11 @@ class YoutubeUploadVideoController extends Controller
 
         try {
 
-            Storage::delete('public/' . $localVideo->fullPathToImage);
+            unlink('public/' . $localVideo->fullPathToImage);
 
-            Storage::delete('public/' . $localVideo->fullPathToImageResize);
+            unlink('public/' . $localVideo->fullPathToImageResize);
 
-            Storage::delete('public/' . $localVideo->fullPathToVideo);
+            unlink('public/' . $localVideo->fullPathToVideo);
 
             $fullPathToVideo = $request->file('video')->store('uploads/video', 'public');
 
@@ -187,13 +186,13 @@ class YoutubeUploadVideoController extends Controller
 
         try {
 
-            Storage::delete('public/' . $localVideo->fullPathToImage);
+            unlink('public/' . $localVideo->fullPathToImage);
 
-            Storage::delete('public/' . $localVideo->fullPathToImageResize);
+            unlink('public/' . $localVideo->fullPathToImageResize);
 
-            Storage::delete('public/' . $localVideo->fullPathToVideo);
+            unlink('public/' . $localVideo->fullPathToVideo);
 
-            Youtube::delete($localVideo->video_id);
+           
 
             $localVideo->delete();
         }catch (Exception $exception){
