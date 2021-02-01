@@ -135,11 +135,11 @@ class YoutubeUploadVideoController extends Controller
 
         try {
 
-            unlink('public/' . $localVideo->fullPathToImage);
+            unlink('storage/' . $localVideo->fullPathToImage);
 
-            unlink('public/' . $localVideo->fullPathToImageResize);
+            unlink('storage/' . $localVideo->fullPathToImageResize);
 
-            unlink('public/' . $localVideo->fullPathToVideo);
+            unlink('storage/' . $localVideo->fullPathToVideo);
 
             $fullPathToVideo = $request->file('video')->store('uploads/video', 'public');
 
@@ -155,7 +155,7 @@ class YoutubeUploadVideoController extends Controller
 
             $tagsSerialize = serialize($tags);
 
-            $video = Youtube::update($localVideo->video_id, [
+            $video = Youtube::update('storage/'.$localVideo->video_id, [
                 'title' => $request->input('title'),
                 'description' => $request->input('description'),
                 'tags' => $tags,
@@ -186,11 +186,11 @@ class YoutubeUploadVideoController extends Controller
 
         try {
 
-            unlink('public/' . $localVideo->fullPathToImage);
+            unlink('storage/' . $localVideo->fullPathToImage);
 
-            unlink('public/' . $localVideo->fullPathToImageResize);
+            unlink('storage/' . $localVideo->fullPathToImageResize);
 
-            unlink('public/' . $localVideo->fullPathToVideo);
+            unlink('storage/' . $localVideo->fullPathToVideo);
 
            
 
